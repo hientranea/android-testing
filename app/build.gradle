@@ -110,6 +110,8 @@ dependencies {
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-contrib:$rootProject.ext.espressoVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-intents:$rootProject.ext.espressoVersion"
+
+    implementation 'com.google.firebase:firebase-core:16.0.0'
 }
 
 /*
@@ -119,3 +121,5 @@ dependencies. This is required since Espresso internally has a dependency on sup
 configurations.all {
     resolutionStrategy.force "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
 }
+
+apply plugin: 'com.google.gms.google-services'
