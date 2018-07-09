@@ -17,6 +17,7 @@
 package com.example.android.testing.notes.notes;
 
 import com.example.android.testing.notes.R;
+import com.example.android.testing.notes.util.EspressoIdlingResource;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -25,6 +26,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import android.support.test.espresso.Espresso;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -105,8 +107,10 @@ public class NotesScreenTest {
 
     @Test
     public void addNoteToNotesList() throws Exception {
-        String newNoteTitle = "Espresso";
-        String newNoteDescription = "UI testing for Android";
+        Espresso.registerIdlingResources(EspressoIdlingResource.getIdlingResource());
+
+        String newNoteTitle = "abc";
+        String newNoteDescription = "ddd";
 
         // Click on the add note button
         onView(withId(R.id.fab_add_notes)).perform(click());
@@ -119,6 +123,8 @@ public class NotesScreenTest {
 
         // Save the note
         onView(withId(R.id.fab_add_notes)).perform(click());
+
+        onView(withId(R.id.notes_list)).check(matches(isDisplayed()));
 
         // Scroll notes list to added note, by finding its description
         onView(withId(R.id.notes_list)).perform(
