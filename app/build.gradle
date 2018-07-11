@@ -59,7 +59,8 @@ android {
             dimension "mock"
         }
         prod {
-
+            applicationIdSuffix = ".mock"
+            dimension "mock"
         }
     }
 
