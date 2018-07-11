@@ -13,7 +13,7 @@ tasks.withType(Test) {
     jacoco.includeNoLocationClasses = true
 }
 
-task jacocoTestReport(type: JacocoReport, dependsOn: ['testMockDebugUnitTest' , 'createMockDebugCoverageReport']) {
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testMockDebugUnitTest']) {
 
     reports {
         xml.enabled = true
