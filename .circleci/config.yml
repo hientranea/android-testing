@@ -175,6 +175,27 @@ jobs:
         - *attach_debug_workspace
         - *export_gcloud_key
         - *decode_gcloud_key
+        - run:
+            name: Set Google Cloud target project
+            #ProjectId: android-testing-73909
+            command: gcloud config set project android-testing-73909
+        - run:
+            name: Authenticate with Google Cloud
+            #Firebase service account: firebase-adminsdk-o6tc8@android-testing-73909.iam.gserviceaccount.com
+            command: gcloud auth activate-service-account firebase-adminsdk-o6tc8@android-testing-73909.iam.gserviceaccount.com --key-file ${HOME}/client-secret.json
+        - run:
+            name: Run instrumented test on Firebase Test Lab
+            command: gcloud firebase test android run --type instrumentation --app app/build/outputs/apk/mock/debug/app-mock-debug.apk --test app/build/outputs/apk/androidTest/mock/debug/app-mock-debug-androidTest.apk --device model=sailfish,version=26,locale=en_US,orientation=portrait --environment-variables coverage=true,coverageFile=/sdcard/tmp/code-coverage/connected/coverage.ec --directories-to-pull=/sdcard/tmp --timeout 20m
+        - run:
+            name: Create directory to store test results
+            command: mkdir firebase
+        - run:
+            name: Download instrumented test results from Firebase Test Lab
+            command: gsutil -m cp -r -U "`gsutil ls gs://test-lab-3udbiqpdyp0d0-miwcp7d69v80m | tail -1`*" /root/workspace/firebase/
+        - *persist_firebase_workspace
+        - store_artifacts:
+            path: firebase/
+            destination: /firebase/
 
 workflows:
   version: 2
