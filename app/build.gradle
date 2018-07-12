@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'jacoco'
+apply plugin: 'com.github.kt3k.coveralls'
+
 jacoco {
     toolVersion = "$jacocoVersion"
 }
@@ -30,6 +31,11 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testMockDebugUnitTest']) 
             'jacoco/testMockDebugUnitTest.exec',
             'outputs/code-coverage/connected/*coverage.ec'
     ])
+}
+
+tasks.coveralls {
+    dependsOn 'check'
+    onlyIf { System.getenv("COVERALLS_REPO_TOKEN") }
 }
 
 task uploadCoverageToCodacy(type : JavaExec, dependsOn : jacocoTestReport) {
