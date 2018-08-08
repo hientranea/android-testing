@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'jacoco'
 apply plugin: 'com.github.kt3k.coveralls'
+apply plugin: 'io.fabric'
 
 jacoco {
     toolVersion = "$jacocoVersion"
@@ -165,6 +166,11 @@ dependencies {
 
     // Code coverage by Codacy
     codacy 'com.github.codacy:codacy-coverage-reporter:4.0.1'
+
+    //Fabric
+    implementation('com.crashlytics.sdk.android:crashlytics:2.9.4@aar') {
+        transitive = true;
+    }
 }
 
 /*

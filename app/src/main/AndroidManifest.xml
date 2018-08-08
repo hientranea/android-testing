@@ -23,12 +23,14 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+      android:name=".MyApplication"
         android:theme="@style/AppTheme">
         <activity
                 android:name=".notes.NotesActivity"
@@ -38,6 +40,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+          android:name="io.fabric.ApiKey"
+          android:value="2305e472856bc847ebfdb0324f8ebb6fccbfd29e"
+          />
         <activity android:name=".notedetail.NoteDetailActivity" />
         <activity android:name=".addnote.AddNoteActivity" />
         <activity android:name=".statistics.StatisticsActivity" />

@@ -22,6 +22,9 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+
+import java.util.concurrent.TimeoutException;
 
 /**
  * Show statistics for notes. At this point this is just a dummy implementation.
@@ -47,5 +50,13 @@ public class StatisticsActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    public void forceCrash(View view) {
+        throw new RuntimeException("This is a crash");
+    }
+
+    public void forceCrash_timeout(View view) throws TimeoutException {
+        throw new TimeoutException("Timeout");
     }
 }
