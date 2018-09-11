@@ -1,7 +1,5 @@
 # Android Testing Codelab
 
-[![Coverage Status](https://coveralls.io/repos/github/hientranea/android-testing/badge.svg?branch=master)](https://coveralls.io/github/hientranea/android-testing?branch=master)
-
 This folder contains the source code for the Android testing codelab. It gives an introduction into testing on Android, including unit tests and UI tests. 
 
 ### Getting Started
