@@ -112,12 +112,22 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+
+        def hockeyAppId = System.getenv("HOCKEYAPP_APP_ID") ?: ""
+        buildConfigField "String", "HOCKEYAPP_APP_ID", "\"".concat(hockeyAppId).concat("\"")
+        manifestPlaceholders = [HOCKEYAPP_APP_ID: hockeyAppId]
+
     }
 
     buildTypes {
         debug {
             // Run code coverage reports by default on debug builds.
             testCoverageEnabled = true
+        }
+
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
         }
     }
 
@@ -143,12 +153,24 @@ android {
         }
     }
 
+    testOptions.unitTests {
+        includeAndroidResources = true
+    }
+
     // Always show the result of every unit test, even if it passes.
     testOptions.unitTests.all {
         testLogging {
             events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
         }
+        jacoco {
+            includeNoLocationClasses = true
+        }
+
     }
+    lintOptions {
+        lintConfig file("lint.xml")
+    }
+
 }
 
 /*
