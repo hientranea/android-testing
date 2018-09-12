@@ -205,8 +205,6 @@ dependencies {
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     //Hockey app
     implementation 'net.hockeyapp.android:HockeySDK:5.1.0'
-    testImplementation "org.robolectric:robolectric:3.8"
-    testImplementation "org.robolectric:shadows-support-v4:3.4-rc2"
     //=======================
 
     implementation "com.google.guava:guava:$rootProject.guavaVersion"
