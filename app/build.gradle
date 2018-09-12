@@ -1,6 +1,16 @@
-apply plugin: 'com.android.application'
 
-apply plugin: 'jacoco'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
+    id 'jacoco'
+}
+
+androidExtensions {
+    experimental = true
+}
+
 jacoco {
     toolVersion = "$jacocoVersion"
 }
@@ -128,6 +138,8 @@ android {
  all versions in a single place. This improves readability and helps managing project complexity.
  */
 dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     // App's dependencies, including test
     implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
     implementation "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
