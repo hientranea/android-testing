@@ -190,6 +190,24 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.google.dagger:dagger-android:2.15'
     kapt 'com.google.dagger:dagger-compiler:2.15'
+    // Retrofit 2
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+    // Rxjava 2
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    // Gson
+    implementation 'com.google.code.gson:gson:2.8.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    // MP Chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    //Hockey app
+    implementation 'net.hockeyapp.android:HockeySDK:5.1.0'
+    testImplementation "org.robolectric:robolectric:3.8"
+    testImplementation "org.robolectric:shadows-support-v4:3.4-rc2"
+    //=======================
 
     implementation "com.google.guava:guava:$rootProject.guavaVersion"
     implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
