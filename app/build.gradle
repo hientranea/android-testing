@@ -203,8 +203,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     // MP Chart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
-    //Hockey app
-    implementation 'net.hockeyapp.android:HockeySDK:5.1.0'
+
     //=======================
 
     implementation "com.google.guava:guava:$rootProject.guavaVersion"
